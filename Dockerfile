@@ -5,6 +5,5 @@ RUN pwd
 RUN apt-get install -y git
 
 COPY README.md /home/rstudio/README.md
-
-# Add glue package (To trigger rebuild)
-RUN Rscript -e "install.packages('glue', repos = 'https://cloud.r-project.org')"
+RUN Rscript -e "install.packages('renv', repos = c(CRAN = 'https://cloud.r-project.org'))"
+RUN Rscript -e "install.packages('remotes', repos = c(CRAN = 'https://cloud.r-project.org'))"
